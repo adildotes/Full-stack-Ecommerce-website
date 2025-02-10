@@ -1,0 +1,12 @@
+{
+  "name": "genkart-next-node-ecommerce-v2-main",
+  "version": "1.0.0",
+  "description": "<img src=\"./readme-assets/herosc.png\" alt=\"\" />\r <img src=\"./readme-assets/exploresc.png\" alt=\"\" />\r <img src=\"./readme-assets/productsc.png\" alt=\"\" />\r <img src=\"./readme-assets/adminsc.png\" alt=\"\" />",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,13 +1,15 @@
-// controllers/cartController.js
+import Users from "../models/userSchema";
+import Products from "../models/productSchema";
+import dotenv from "dotenv";
+dotenv.config();
 
-const Users = require("../models/userSchema");
-const Products = require("../models/productSchema");
-require("dotenv").config();
-// Add a product to the cart
 const addToCart = async (req, res) => {
   const { productId, quantity } = req.body;
   console.log(productId, quantity);
-  const userId = req.userId; // Assuming you have a middleware to attach the authenticated user
+  const userId = req.userId; 
+  if (!userId) {
+    return res.status(400).json({ message: "User ID is required" });
+  }
 
   try {
     const user = await Users.findById(userId);
@@ -38,10 +40,6 @@ const removeFromCart = async (req, res) => {
 
   try {
     const user = await Users.findById(userId);
-
-    // Remove the product from the cart
-    // user.cart = user.cart.filter((item) => item.product.toString() !== id);
-    // console.log(user.cart);
 
     const productIndex = user.cart.findIndex((item) => item.product.toString() === id);
 
@@ -75,7 +73,7 @@ const getCart = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   addToCart,
   removeFromCart,
   getCart,

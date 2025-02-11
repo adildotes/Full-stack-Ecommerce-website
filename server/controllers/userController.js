@@ -1,6 +1,8 @@
-const Users = require("../models/userSchema");
-const cloudinary = require("../config/cloudinary");
-require("dotenv").config();
+import Users from "../models/userSchema";
+import cloudinary from "../config/cloudinary";
+import dotenv from "dotenv";
+dotenv.config();
+
 
 const singleUserData = async (req, res) => {
   try {
@@ -19,12 +21,6 @@ const allUsers = async (req, res) => {
   const { page = 1, limit = 10 } = req.query;
   console.log(page, limit);
   try {
-    // const user = await Users.find();
-    // if (!user) {
-    //   return res.status(404).json({ error: "User not found" });
-    // } else {
-    //   return res.status(200).json({ user });
-    // }
     const users = await Users.find()
       .skip((page - 1) * limit)
       .limit(Number(limit));
@@ -43,7 +39,7 @@ const editUserData = async (req, res) => {
   const { name } = req.body;
   console.log(name);
   try {
-    const user = await Users.findById(req.userId); // exclude the password
+    const user = await Users.findById(req.userId);
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }

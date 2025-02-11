@@ -1,5 +1,8 @@
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const adminAuthMiddleware = (req, res, next) => {
   const token = req.cookies.adminUserToken;
   if (!token) {
@@ -14,4 +17,4 @@ const adminAuthMiddleware = (req, res, next) => {
   }
 };
 
-module.exports =  adminAuthMiddleware ;
+export default adminAuthMiddleware;

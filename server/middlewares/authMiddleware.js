@@ -1,11 +1,12 @@
-const express = require("express");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
+import express from "express";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config();
 
 const authMiddleware = (req, res, next) => {
   const token = req.cookies.userToken;
-  console.log("token",token)
+  console.log("token", token);
   if (!token) {
     return res.status(401).json({ message: "Not authenticated" });
   }
@@ -18,4 +19,4 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-module.exports =  authMiddleware ;
+export default authMiddleware;

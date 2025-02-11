@@ -1,4 +1,4 @@
-import upload from "../middlewares/multer";
+import upload from "../middlewares/multer.js";
 import express from "express";
 const router = new express.Router();
 import {
@@ -9,9 +9,9 @@ import {
   getProductById,
   trendProducts,
   offerProducts,
-} from "../controllers/productController";
+} from "../controllers/productController.js";
 
-import adminAuthMiddleWare from "../middlewares/adminAuthMiddleware";
+import adminAuthMiddleWare from "../middlewares/adminAuthMiddleware.js";
 
 router.post("/", adminAuthMiddleWare, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'additionalImages', maxCount: 3 }]), createProduct);
 

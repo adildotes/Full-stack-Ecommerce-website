@@ -1,6 +1,9 @@
-const Products = require("../models/productSchema");
-const cloudinary = require("../config/cloudinary");
-require("dotenv").config();
+import Products from "../models/productSchema";
+import cloudinary from "../config/cloudinary";
+import dotenv from "dotenv";
+
+dotenv.config();
+
 const createProduct = async (req, res) => {
   const {
     name,
@@ -80,17 +83,6 @@ const updateProduct = async (req, res) => {
       return res.status(404).json({ message: "Product not found" });
     }
     console.log(product.image);
-
-    // let imageUrl = product.imageUrl;
-    // if (req.file) {
-    //   const publicId = product.imageUrl.split("/").pop().split(".")[0];
-    //   await cloudinary.uploader.destroy(publicId);
-
-    //   const result = await cloudinary.uploader.upload(req.file.path, {
-    //     folder: process.env.CLOUDINARY_FOLDER_NAME,
-    //   });
-    //   imageUrl = result.secure_url;
-    // }
 
     console.log(req.files.image);
     if (req.files.image) {
@@ -187,10 +179,6 @@ const getProducts = async (req, res) => {
 
       query.category = category;
     }
-    // if (minPrice > 0 && maxPrice > 0) {
-    //   console.log("m", minPrice, maxPrice);
-    //   query.price = { $gte: Number(minPrice), $lte: Number(maxPrice) };
-    // }
     if (minPrice > 0) {
       query.sellingPrice = { ...query.sellingPrice, $gte: Number(minPrice) };
     }
@@ -257,7 +245,7 @@ const offerProducts = async (req, res) => {
     }
     query.offer = true;
 
-    console.log(query,"query");
+    console.log(query, "query");
     const products = await Products.find(query)
       .skip((page - 1) * limit)
       .limit(Number(limit));
@@ -270,7 +258,7 @@ const offerProducts = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   createProduct,
   updateProduct,
   deleteProduct,

@@ -1,10 +1,10 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const adminSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: [true,'email are in use'],
+    unique: [true, 'email are in use'],
   },
   password: {
     type: String,
@@ -16,6 +16,6 @@ const adminSchema = new mongoose.Schema({
 //   return await bcrypt.compare(enteredPassword, this.password);
 // };
 
-const Admin = new mongoose.model("Admin", adminSchema);
+const Admin = mongoose.model("Admin", adminSchema);
 
-module.exports = Admin;
+export default Admin;

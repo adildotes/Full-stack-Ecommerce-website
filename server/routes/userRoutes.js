@@ -1,8 +1,8 @@
 import express from "express";
-import upload from "../middlewares/multer";
-import { singleUserData, allUsers, editUserData } from "../controllers/userController";
-import authMiddleWare from "../middlewares/authMiddleware";
-import adminAuthMiddleware from "../middlewares/adminAuthMiddleware";
+import upload from "../middlewares/multer.js";
+import { singleUserData, allUsers, editUserData } from "../controllers/userController.js";
+import authMiddleWare from "../middlewares/authMiddleware.js";
+import adminAuthMiddleware from "../middlewares/adminAuthMiddleware.js";
 
 const router = express.Router();
 

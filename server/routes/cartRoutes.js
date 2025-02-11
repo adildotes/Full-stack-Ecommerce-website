@@ -1,12 +1,8 @@
-const express = require("express");
-const router = new express.Router();
-const {
-  addToCart,
-  removeFromCart,
-  getCart,
-} = require("../controllers/cartController");
+import express from "express";
+import { addToCart, removeFromCart, getCart } from "../controllers/cartController.js";
+import authMiddleWare from "../middlewares/authMiddleware.js";
 
-const authMiddleWare = require("../middlewares/authMiddleware");
+const router = express.Router();
 
 router.post("/", authMiddleWare, addToCart);
 
@@ -14,4 +10,4 @@ router.delete("/:id", authMiddleWare, removeFromCart);
 
 router.get("/", authMiddleWare, getCart);
 
-module.exports = router;
+export default router;

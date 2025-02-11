@@ -1,17 +1,15 @@
-const express = require("express");
-const router = new express.Router();
-const {
+import express from 'express';
+import {
   login,
   logout,
   signup,
   forgotPassword,
   resetPassword,
   adminLogin,
-  adminSignup,
   adminLogout,
-} = require("../controllers/authController");
-const Admin = require("../models/adminSchema");
-const bcrypt = require('bcryptjs')
+} from '../controllers/authController.js';
+
+const router = express.Router();
 
 router.post("/login", login);
 
@@ -27,10 +25,9 @@ router.post("/admin/login", adminLogin);
 
 router.post("/admin/logout", adminLogout);
 
-
 //create admin
 
 // router.post("/admin/signup", adminSignup);
 
-
-module.exports = router;
+export default router;
+router.post("/admin/signup", adminSignup);

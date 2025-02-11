@@ -1,11 +1,13 @@
-const Users = require("../models/userSchema");
-const Admin = require("../models/adminSchema");
-const crypto = require("crypto");
-const bcrypt = require("bcrypt");
-const sendEmail = require("../utils/sendEmail");
-const jwt = require("jsonwebtoken");
-const cookie = require("cookie");
-require("dotenv").config();
+import Users from "../models/userSchema";
+import Admin from "../models/adminSchema";
+import crypto from "crypto";
+import bcrypt from "bcrypt";
+import sendEmail from "../utils/sendEmail";
+import jwt from "jsonwebtoken";
+import cookie from "cookie";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const generateToken = (userId, secret, expiresIn) => {
   return jwt.sign({ userId }, secret, { expiresIn });
@@ -32,15 +34,13 @@ const login = async (req, res) => {
     );
 
     res.cookie("userToken", token, {
-      // domain:process.env.DOMAIN_NAME,
       httpOnly: true,
       path: "/",
       secure: process.env.NODE_ENV === "production",
-      sameSite:  process.env.NODE_ENV === "production" ? "None" : "Lax",
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
       maxAge: 24 * 60 * 60 * 1000, 
     });
-    // res.setHeader('Authorization', `Bearer ${token}`);
-    res.status(200).json({ message: "Login successful",token });
+    res.status(200).json({ message: "Login successful", token });
   } catch (error) {
     res.status(500).json({ message: "Login Error", error });
   }
@@ -67,7 +67,7 @@ const signup = async (req, res) => {
 
 const forgotPassword = async (req, res) => {
   const { email } = req.body;
-console.log(email)
+  console.log(email);
   try {
     const user = await Users.findOne({ email });
     if (!user) {
@@ -84,7 +84,6 @@ console.log(email)
       "Password Reset",
       `Reset your password here: ${process.env.CLIENT_URL}/reset-password?token=${resetToken}`
     );
-    // await transporter.sendMail(mailOptions);
     res.status(200).json({ message: "Password reset email sent" });
   } catch (error) {
     res.status(500).json({ message: "Failed to send reset email" });
@@ -94,7 +93,7 @@ console.log(email)
 const resetPassword = async (req, res) => {
   const { token, newPassword } = req.body;
 
-  console.log(token, newPassword)
+  console.log(token, newPassword);
 
   try {
     const user = await Users.findOne({
@@ -147,7 +146,7 @@ const adminLogin = async (req, res) => {
     maxAge: 24 * 60 * 60 * 1000, // 1 day
   });
 
-  res.status(200).json({ message: "Login successful",adminToken });
+  res.status(200).json({ message: "Login successful", adminToken });
 };
 
 const adminLogout = (req, res) => {
@@ -170,7 +169,7 @@ const adminSignup = async (req, res) => {
   }
 };
 
-module.exports = {
+export {
   login,
   logout,
   signup,

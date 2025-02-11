@@ -1,6 +1,5 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
-
+import mongoose from "mongoose";
+import bcrypt from "bcryptjs";
 const userSchema = new mongoose.Schema(
   {
     name: {
@@ -18,7 +17,7 @@ const userSchema = new mongoose.Schema(
     },
     profileImage: {
       type: String,
-      default:"https://res.cloudinary.com/ded1o1e26/image/upload/v1733411240/istockphoto-1223671392-612x612_hemk0v.jpg"
+      default: "https://res.cloudinary.com/ded1o1e26/image/upload/v1733411240/istockphoto-1223671392-612x612_hemk0v.jpg"
       //default:"https://res.cloudinary.com/ded1o1e26/image/upload/v1726405493/profile_ioufgc.png"
     },
     resetPasswordToken: {
@@ -27,7 +26,7 @@ const userSchema = new mongoose.Schema(
     resetPasswordExpires: {
       type: Date,
     },
-   
+
     cart: [
       {
         product: {
@@ -59,5 +58,4 @@ userSchema.methods.matchPassword = async function (enteredPassword) {
 };
 
 const Users = new mongoose.model("Users", userSchema);
-
-module.exports = Users;
+export default Users;

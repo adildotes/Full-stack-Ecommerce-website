@@ -1,5 +1,4 @@
 "use client";
-
 import Filter from "@/components/Filter";
 import Loader from "@/components/Loader";
 import Pagination from "@/components/Pagination";
@@ -23,15 +22,13 @@ export default function Page() {
     userData,
     setUserData,
   } = useGlobalContext();
-  // console.log(searchTerm, "in p");
-  // console.log(pagination, "in p");
-  // console.log(filters, "in p");
   const [PaginatedValue, setPaginatedValue] = useState(1);
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     setPagination({ ...pagination, currentPage: 1 });
+    console.log("useEffect" + pagination.currentPage);
   }, []);
 
   useEffect(() => {
@@ -52,7 +49,6 @@ export default function Page() {
       }).toString();
       try {
         const res = await axiosInstance.get(`/product?${query}`);
-        // console.log(res.data);
         setProducts(res.data.products);
         setPaginatedValue(res.data.totalPages);
         setLoading(false);

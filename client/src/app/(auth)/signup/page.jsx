@@ -36,7 +36,7 @@ export default function Page() {
   const handleSubmit = async () => {
 
     try {
-      
+
 
       const res = await axiosInstance.post("/auth/signup", {
         name,
@@ -55,7 +55,7 @@ export default function Page() {
 
   return (
     <div className="bg-gray-100 lg:p-10 p-2 lg:px-32 min-h-[100vh] w-full">
-    <div className="flex gap-2 items-center py-5 px-3">
+      <div className="flex gap-2 items-center py-5 px-3">
         <div
           onClick={() => router.push("/")}
           className="flex gap-1 items-center hover:font-semibold cursor-pointer hover:underline underline-offset-4"
@@ -90,7 +90,7 @@ export default function Page() {
                     id=""
                     required
                     value={name}
-                    onChange={(e)=>setName(e.target.value)}
+                    onChange={(e) => setName(e.target.value)}
                     className="px-5 py-2 border border-black/20 rounded-xl  focus:outline-none "
                   />
                 </div>
@@ -188,7 +188,7 @@ export default function Page() {
             <div className="flex items-center gap-3 rounded-xl  px-2 py-3 ">
               <FaOpencart className="text-3xl" />
               <h1 className="text-2xl font-semibold text-center">
-                G<span className="text-zinc-500 ">K</span>
+                P<span className="text-zinc-500 ">T</span>
               </h1>
             </div>
           </div>

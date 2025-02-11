@@ -69,7 +69,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-5">
                   <FaOpencart className="text-3xl" />
                   <h1 className="text-2xl font-semibold text-center">
-                    G<span className=" text-gray-300 ">K</span>
+                    P<span className=" text-gray-300 ">T</span>
                   </h1>
                 </div>
                 <div className="lg:flex hidden">

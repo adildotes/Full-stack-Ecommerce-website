@@ -1,6 +1,6 @@
 import Head from 'next/head';
 
-const SEO = ({ title, description, keywords, image, url,author }) => {
+const SEO = ({ title, description, keywords, image, url, author }) => {
   return (
     <Head>
       {/* Basic Meta Tags */}
@@ -23,7 +23,7 @@ const SEO = ({ title, description, keywords, image, url,author }) => {
       <meta property="twitter:title" content={title} />
       <meta property="twitter:description" content={description} />
       <meta property="twitter:image" content={image} />
-      
+
       {/* Other Meta Tags */}
       <meta name="robots" content="index, follow" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />

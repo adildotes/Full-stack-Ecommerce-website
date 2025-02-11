@@ -1,6 +1,7 @@
-const express = require("express");
+import upload from "../middlewares/multer";
+import express from "express";
 const router = new express.Router();
-const {
+import {
   createProduct,
   updateProduct,
   deleteProduct,
@@ -8,13 +9,11 @@ const {
   getProductById,
   trendProducts,
   offerProducts,
-} = require("../controllers/productController");
+} from "../controllers/productController";
 
-const upload = require("../middlewares/multer");
+import adminAuthMiddleWare from "../middlewares/adminAuthMiddleware";
 
-const  adminAuthMiddleWare  = require("../middlewares/adminAuthMiddleware");
-
-router.post("/", adminAuthMiddleWare, upload.fields([{ name: 'image', maxCount: 1  }, { name: 'additionalImages', maxCount: 3 }]), createProduct);
+router.post("/", adminAuthMiddleWare, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'additionalImages', maxCount: 3 }]), createProduct);
 
 router.put("/:id", adminAuthMiddleWare, upload.fields([{ name: 'image', maxCount: 1 }, { name: 'additionalImages', maxCount: 3 }]), updateProduct);
 
@@ -28,4 +27,4 @@ router.get("/filter/trend", trendProducts);
 
 router.get("/filter/offer", offerProducts);
 
-module.exports = router;
+export default router;

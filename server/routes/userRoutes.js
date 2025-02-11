@@ -1,21 +1,15 @@
-const express = require("express");
-const router = new express.Router();
-const upload = require("../middlewares/multer");
+import express from "express";
+import upload from "../middlewares/multer";
+import { singleUserData, allUsers, editUserData } from "../controllers/userController";
+import authMiddleWare from "../middlewares/authMiddleware";
+import adminAuthMiddleware from "../middlewares/adminAuthMiddleware";
 
-const {
-  singleUserData,
-  allUsers,
-  editUserData,
-} = require("../controllers/userController");
-
-const authMiddleWare = require("../middlewares/authMiddleware");
-
-const adminAuthMiddleware = require("../middlewares/adminAuthMiddleware");
+const router = express.Router();
 
 router.get("/me", authMiddleWare, singleUserData);
 
 router.get("/all", adminAuthMiddleware, allUsers);
 
-router.put("/me",authMiddleWare, upload.single("image"), editUserData);
+router.put("/me", authMiddleWare, upload.single("image"), editUserData);
 
-module.exports = router;
+export default router;

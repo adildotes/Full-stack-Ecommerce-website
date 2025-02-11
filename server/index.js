@@ -1,15 +1,14 @@
-const express = require("express");
+import express from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
+import bodyParser from "body-parser";
+import router from "./routes/router";
+import authRoutes from "./routes/authRoutes";
+import cartRoutes from "./routes/cartRoutes";
+import productRoutes from "./routes/productRoutes";
+import userRoutes from "./routes/userRoutes";
+
 const app = express();
-const cors = require("cors");
-const cookieParser = require("cookie-parser");
-
-const bodyParser = require('body-parser')
-
-const router = require("./routes/router");
-const authRoutes = require("./routes/authRoutes");
-const cartRoutes = require("./routes/cartRoutes");
-const productRoutes = require("./routes/productRoutes");
-const userRoutes = require("./routes/userRoutes")
 
 require("dotenv").config();
 require("./db/config");

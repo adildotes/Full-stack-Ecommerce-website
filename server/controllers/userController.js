@@ -1,13 +1,11 @@
-import Users from "../models/userSchema";
-import cloudinary from "../config/cloudinary";
+import Users from "../models/userSchema.js";
+import cloudinary from "../config/cloudinary.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-
 const singleUserData = async (req, res) => {
   try {
-    // Assuming the user ID is available in req.user from authentication middleware
-    const user = await Users.findById(req.userId).select("-password"); // exclude the password
+    const user = await Users.findById(req.userId).select("-password");
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -62,8 +60,4 @@ const editUserData = async (req, res) => {
   }
 };
 
-module.exports = {
-  singleUserData,
-  allUsers,
-  editUserData,
-};
+export { singleUserData, allUsers, editUserData };

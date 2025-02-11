@@ -1,5 +1,5 @@
-import Users from "../models/userSchema";
-import Products from "../models/productSchema";
+import Users from "../models/userSchema.js";
+import Products from "../models/productSchema.js";
 import dotenv from "dotenv";
 dotenv.config();
 

@@ -7,6 +7,7 @@ import {
   resetPassword,
   adminLogin,
   adminLogout,
+  adminSignup,
 } from '../controllers/authController.js';
 
 const router = express.Router();

@@ -1,5 +1,5 @@
-import Products from "../models/productSchema";
-import cloudinary from "../config/cloudinary";
+import Products from "../models/productSchema.js";
+import cloudinary from "../config/cloudinary.js";
 import dotenv from "dotenv";
 
 dotenv.config();

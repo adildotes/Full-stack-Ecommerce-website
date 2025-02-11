@@ -1,5 +1,5 @@
 import express from "express";
-import { normal } from "../controllers/basicController.js";
+import normal from "../controllers/basicController.js";
 
 const router = express.Router();
 

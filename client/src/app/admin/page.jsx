@@ -20,7 +20,6 @@ export default function Page() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [pop, setPop] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,13 +29,11 @@ export default function Page() {
         email,
         password,
       });
-      // console.log(res.data);
       await setCookie("adminToken", res.data.adminToken);
       router.push("/admin/secure/home");
       toast.success("Logged In Successfully");
     } catch (error) {
       console.error(error);
-      // console.log(error.response.data.message);
       toast.error("Issue on Login");
     }
   };
@@ -119,7 +116,7 @@ export default function Page() {
             <div className="flex items-center gap-3 rounded-xl  px-2 py-3 ">
               <FaOpencart className="text-3xl" />
               <h1 className="text-2xl font-semibold text-center">
-                G<span className="text-zinc-500 ">K</span>
+                P<span className="text-zinc-500 ">T</span>
               </h1>
             </div>
           </div>
